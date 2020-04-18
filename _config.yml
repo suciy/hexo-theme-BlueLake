@@ -1,107 +1,149 @@
-# Hexo Configuration
-## Docs: https://hexo.io/docs/configuration.html
-## Source: https://github.com/hexojs/hexo/
+##########################
+## Site Config Settings ##
+##########################
 
-# Site
-title: 心灵小筑
-subtitle: '笔记与好心情'
-description: '记录日常学习笔记、心得，以 Web 项为主题，欢迎加入！'
-keywords:
-author: Suciy
-language: zh-CN
-timezone: ''
+# Theme version
+version: 2.0.5
 
-# URL
-## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: https://suciy.github.io/
-root: /blogs/
-permalink: :year/:month/:day/:title/
-permalink_defaults:
-pretty_urls:
-  trailing_index: true # Set to false to remove trailing 'index.html' from permalinks
-  trailing_html: true # Set to false to remove trailing '.html' from permalinks
+# Theme tone
+dark: false #true/false
 
-# Directory
-source_dir: source
-public_dir: public
-tag_dir: tags
-archive_dir: archives
-category_dir: categories
-code_dir: downloads/code
-i18n_dir: :lang
-skip_render:
+# Header
+menu:
+  - page: home
+    directory: .
+    icon: fa-home
+  - page: archive
+    directory: archives/
+    icon: fa-archive
+  # - page: about
+  #   directory: about/
+  #   icon: fa-user
+  # - page: rss
+  #   directory: atom.xml
+  #   icon: fa-rss
 
-# Writing
-new_post_name: :title.md # File name of new posts
-default_layout: post
-titlecase: false # Transform title into titlecase
-external_link:
-  enable: true # Open external links in new tab
-  field: site # Apply to the whole site
-  exclude: ''
-filename_case: 0
-render_drafts: false
-post_asset_folder: true
-relative_link: false
-future: true
-highlight:
+# Sidebar
+widgets:
+  - recent_posts
+  - category
+  # - tag
+  - archive
+  #- weibo
+  # - links
+
+# Toc
+toc:
   enable: true
-  line_number: true
-  auto_detect: false
-  tab_replace: ''
-  wrap: true
-  hljs: false
+  number: false
 
-# Home page setting
-# path: Root path for your blogs index page. (default = '')
-# per_page: Posts displayed per page. (0 = disable pagination)
-# order_by: Posts order. (Order by date descending by default)
-index_generator:
-  path: ''
-  per_page: 10
-  order_by: -date
+# Static files
+js: js
+css: css
+share_path: share
 
-# Category & Tag
-default_category: uncategorized
-category_map:
-tag_map:
-
-# Metadata elements
-## https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta
-meta_generator: true
-
-# Date / Time format
-## Hexo uses Moment.js to parse and display date
-## You can customize the date format as defined in
-## http://momentjs.com/docs/#/displaying/format/
-date_format: YYYY-MM-DD
-time_format: HH:mm:ss
-## Use post's date for updated date unless set in front-matter
-use_date_for_updated: false
-
-# Pagination
-## Set per_page to 0 to disable pagination
-per_page: 10
-pagination_dir: page
-
-# Include / Exclude file(s)
-## include:/exclude: options only apply to the 'source/' folder
-include:
-exclude:
-ignore:
+# Date_formats
+date_formats:
+  archive: "MM月DD日"
+  category: "YYYY/MM/DD"
+  post: "MMM DD, YYYY"
+  tag: "YYYY/MM/DD"
 
 # Extensions
-## Plugins: https://hexo.io/plugins/
-## Themes: https://hexo.io/themes/
-theme: BlueLake
-disqus_shortname: your-disqus-shortname
+Plugins:
+  hexo-generator-feed
+  hexo-generator-sitemap
+  hexo-generator-baidu-sitemap
 
-# Deployment
-## Docs: https://hexo.io/docs/deployment.html
-deploy:
-  type: git
-  repository: https://github.com/suciy/blogs
-  branch: master
+#Feed Atom
+feed:
+  type: atom
+  path: atom.xml
+  limit: 20
+
+#sitemap
+sitemap:
+  path: sitemap.xml
+baidusitemap:
+  path: baidusitemap.xml
+
+#Local search
+local_search: true ## Use a javascript-based local search engine, true/false.
+
+#Copyright
+copyright:
+  enable: true #display article copyright information, true/false.
+  describe: #copyright description
+
+# MathJax Support
+mathjax:
+  enable: false  #true/false.
+  cdn: //cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML
+
+#Cmments
+comment:
+  gitalk:
+    enable: false ## If you want to use Gitment comment system please set the value to true.
+    owner: ## Your GitHub ID, e.g. username
+    repo: ## The repository to store your comments, make sure you're the repo's owner, e.g. gitalk.github.io
+    client_id: ## GitHub client ID, e.g. 75752dafe7907a897619
+    client_secret: ## GitHub client secret, e.g. ec2fb9054972c891289640354993b662f4cccc50
+    admin: ## Github repo owner and collaborators, only these guys can initialize github issues.
+    language: zh-CN ## Language
+    pagerDirection: last # Comment sorting direction, available values are last and first.
+  duoshuo: ## duoshuo_shortname
+  disqus: ## disqus_shortname
+  livere: ## 来必力(data-uid)
+  uyan: ## 友言(uid)
+  cloudTie: ## 网易云跟帖(productKey)
+  changyan: ## 畅言需在下方配置两个参数，此处不填。
+    appid: ## 畅言(appid)
+    appkey: ##畅言(appkey)
+
+#Share
+share:
+  local_share: true ##本地分享
+  baidu_share: #true ## 百度分享
+  JiaThis_share: ##true ##JiaThis分享
+  duoshuo_share: #true ##true 多说分享必须和多说评论一起使用。
+  addToAny_share: # AddToAny share. Empty list hides. List items are service name at url. For ex: email for '<a href="https://www.addtoany.com/add_to/email?linkurl=...'
+  #  - twitter
+  #  - baidu
+  #  - facebook
+  #  - google_plus
+  #  - linkedin
+  #  - email
+
+# Analytics
+google_analytics: ## Your Google Analytics tracking id, e.g. UA-42025684-2
+baidu_analytics: ## Your Baidu Analytics tracking id, e.g. 1006843030519956000
+
+# Miscellaneous
+show_category_count: true ## If you want to show the count of categories in the sidebar widget please set the value to true.
+show_archive_count: true ## If you want to show the count of archives in the sidebar widget please set the value to true.
+show_archive_type: yearly ## defalut monthly
+widgets_on_small_screens: true ## Set to true to enable widgets on small screens.
+busuanzi: true ## If you want to use Busuanzi page views please set the value to true.
+
+# About page
+about:
+  photo_url: ## Your photo e.g. http://cdn.chaooo.top/blog/themeauthor.jpg
+  items:
+  - label: email
+    url: 1582942620@qq.com
+    title: suciy
+  - label: github
+    url: https://github.com/suciy/
+    title: suciy
+
+# Links widget. Empty links will hide widget.
+links:
+  - title: site-name1
+    url: http://www.example1.com/
+  - title: site-name2
+    url: http://www.example2.com/
+  - title: site-name3
+    url: http://www.example3.com/
 
 
 jsonContent:
@@ -121,29 +163,4 @@ jsonContent:
     permalink: false
     excerpt: false
     categories: false
-    tags: true 
-
-menu:
-  - page: home
-    directory: .
-    icon: fa-home
-  - page: archive
-    directory: archives/
-    icon: fa-archive
-  - page: about
-    directory: about/
-    icon: fa-user
-  - page: rss
-    directory: atom.xml
-    icon: fa-rss
-about:
-  photo_url: ## Your photo e.g. http://cdn.chaooo.top/blog/themeauthor.jpg
-  items:
-  - label: email
-    url: 1583942620@qq.com
-    title: ## Your email e.g.  zhenggchaoo@gmail.com
-  - label: github
-    url: http://github.com/suciy
-    title: ## Your github'name e.g.  chaooo 
-
-
+    tags: true
